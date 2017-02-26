@@ -1,0 +1,90 @@
+body {
+	background-color: #778899;
+}
+h1 {
+	font-size: 3.0em;
+	color: #A9A9A9;
+}
+
+.area-search {
+	font-size: 2.0em;
+}
+
+li {
+	font-size: 1.5em;
+}
+
+.col-md-4 {
+	padding: 1.5em;
+}
+
+.col-md-8 {
+	padding: 1.2em;
+	margin-bottom: 2.0em;
+	margin-top: 0.4em;
+}
+
+#map {
+	height: 100vh;
+}
+
+.tooltip h3{
+	color: #A9A9A9; 
+	font-weight: 200;
+	margin-bottom: 0px;
+	font-size: 1.5em;
+}
+
+.tooltip h5{
+	color: #A9A9A9; 
+	font-weight: 200;
+	margin-top: 10px;
+}
+
+p {
+	font-size: 1.1em;
+}
+
+h5 {
+	margin-top:;
+}
+
+.col-md-4, .places-list {
+  padding-left: 3em;
+}
+
+.places-list li{
+    list-style-type: disc;
+    -webkit-margin-before: 2em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0.5em;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.places-list li:hover {
+	text-decoration: underline;
+}
+
+.search-input {
+  margin-left: 0.6em;
+  width: 40%;
+}
+
+.container-fluid {
+	padding-right: 0px !important;
+}
+
+.second-list li {
+	margin-top: 0.4em;
+	color: #A9A9A9;
+
+}
+
+.second-list h3 {
+	color: #A9A9A9;
+
+}

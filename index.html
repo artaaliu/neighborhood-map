@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Perfect places in Florida</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Here are some beautiful places that you can visit in Florida!</h1>
+                <div id="search">
+                    <form id="places-search" class="search-area" data-bind="submit: filterPlaces">
+                        <input type="text" name="search-string" id="search-str" class="search-input" data-bind="textInput: query">
+                        <input type="submit" value="Search for it!" class="search-btn">
+                    </form>
+                </div>
+                <ul data-bind="foreach: filteredPlacesList" class="places-list">
+                    <li data-bind="text: name, click: $parent.placesClick"></li>
+                </ul>
+                <hr>
+                <div class="second-list">
+                    <h3>Read more about those amazing places..</h3>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Universal_Studios_Florida">Explore more about 'Universal Blvd'</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Walt_Disney_World">Explore more about 'Walt Disney World Resort'</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Cocoa_Beach,_Florida">Explore more about 'Cocoa Beach'</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Daytona_Beach,_Florida">Explore more about 'Daytona Beach'</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Panama_City_Beach,_Florida">Explore more about 'Panama Beach'</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Winter_Park,_Florida">Explore more about 'Kissimmee Parks'</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="map" class="col-md-8">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.5354177016366!2d-81.53637648543612!3d28.43326898249677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7803e25e7f969%3A0xf0b787d3c971472c!2s9024+Edenshire+Cir%2C+Orlando%2C+FL+32836!5e0!3m2!1sen!2sus!4v1486696070479" width="800" height="610" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <script src="js/library/jquery-3.0.min.js"></script>
+    <script src="js/library/knockout-3.4.0.js"></script>
+    <script src="js/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPRrGp-U5buut06QfV3kvPN_zAk8ilc4s&callback=initMap" onerror="googleError()"></script>
+
+</body>
+
+</html>
