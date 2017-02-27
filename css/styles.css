@@ -88,3 +88,8 @@ h5 {
 	color: #A9A9A9;
 
 }
+
+#sqphotos img {
+	width: 50px;
+	margin-right: 5px;
+}

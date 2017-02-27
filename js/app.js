@@ -91,11 +91,19 @@ var ViewModel = function() {
         });
     };
 
-    self.placesClick = function(places) {
-        infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5>' + '<a target="_blank" id="places-fsID" href="http://foursquare.com/v/' + places.fsID() + '">Photos of the place</a></div>';
+    self.placesClick = function(places) {     
+        infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos"></div></div>';
         infoWindow.setContent(infoContent);
         infoWindow.open(map, places.marker());
         self.setMarkerAnimation(places);
+
+        $.get('https://api.foursquare.com/v2/venues/'+ places.fsID() +'/photos?limit=9&client_id=CPZGXA5IG0BG14E4CIAGUJP2QGZRZACGEVSDO0D4XU4CH55R&client_secret=3POHDNVHIGWK4RUIZRVRBAUIP4TOIQGHUTS4SHUTV05TORC1&v=20131016', function (data) {
+            $(data.response.photos.items).each(function (i, val) {
+               if(i < 4){
+                    $("#sqphotos").append('<img src="' + val.prefix + '70x70' +val.suffix + '">');
+                }
+            });
+        }, 'json');
     };
 
     self.setMarkerAnimation = function(places) {
@@ -165,4 +173,6 @@ $(document).ready(function() {
         e.preventDefault();
         $('body').toggleClass('nav-expanded');
     });
+
+    
 });
