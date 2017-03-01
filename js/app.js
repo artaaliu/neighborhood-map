@@ -114,10 +114,11 @@ var ViewModel = function() {
 
         request.fail(function(jqXHR, textStatus, errorThrown) {
           if (textStatus == 'timeout')
-            console.log('The server is not responding');
+            infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">No images were found</div></div>';
+
 
           if (textStatus == 'error')
-            console.log(errorThrown);
+            infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">'+errorThrown+'</div></div>';
 
         });
     };

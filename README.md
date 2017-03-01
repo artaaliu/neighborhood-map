@@ -19,7 +19,13 @@ I did a map which has names of places in Florida, and on the map I did a marker 
 
 --  https://github.com/artaaliu/neighborhood-map
 
+-- Go to *Neighborhood-map* Project.
+
 -- You can get it by clicking on "Download zip", and then extract on your computer, or by clicking "Clone or Download", and then on "Open in Desktop".
+
+-- After you get the folder on your computer, you can open the code on sublime text or whatever you use to do your code.
+
+-- To see the page what I had created, you need to open the index file on your browser(google chrome or mozilla etc..), you can open that by clicking on index.html file with right click and open that by clicking on "open by:", and you will see that on your browser.
 
 ----------
 
