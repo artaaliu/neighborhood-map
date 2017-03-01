@@ -48,8 +48,6 @@ var placesLocations = [{
 
 var infoWindow;
 
-
-
 var initMap = function() {
 
     infoWindow = new google.maps.InfoWindow({
@@ -70,6 +68,7 @@ var initMap = function() {
 
 var ViewModel = function() {
     var self = this;
+
     this.placesList = ko.observableArray([]);
     this.filteredPlacesList = ko.observableArray([]);
 
@@ -91,19 +90,36 @@ var ViewModel = function() {
         });
     };
 
-    self.placesClick = function(places) {     
-        infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos"></div></div>';
-        infoWindow.setContent(infoContent);
-        infoWindow.open(map, places.marker());
-        self.setMarkerAnimation(places);
+    var client_id = 'CPZGXA5IG0BG14E4CIAGUJP2QGZRZACGEVSDO0D4XU4CH55R';
+    var client_secret = '3POHDNVHIGWK4RUIZRVRBAUIP4TOIQGHUTS4SHUTV05TORC1';
+    var version = '20170228';
 
-        $.get('https://api.foursquare.com/v2/venues/'+ places.fsID() +'/photos?limit=9&client_id=CPZGXA5IG0BG14E4CIAGUJP2QGZRZACGEVSDO0D4XU4CH55R&client_secret=3POHDNVHIGWK4RUIZRVRBAUIP4TOIQGHUTS4SHUTV05TORC1&v=20131016', function (data) {
+    self.placesClick = function(places) {   
+        var photoThumbs = '';
+        var url = 'https://api.foursquare.com/v2/venues/'+ places.fsID() +'/photos?limit=9&client_id='+client_id+'&client_secret='+client_secret+'&v='+version;
+        var request = $.get(url);
+        request.done(function (data, status) {
             $(data.response.photos.items).each(function (i, val) {
                if(i < 4){
-                    $("#sqphotos").append('<img src="' + val.prefix + '70x70' +val.suffix + '">');
+                    photoThumbs += '<img src="' + val.prefix + '70x70' +val.suffix + '">';
                 }
             });
+
+            infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">'+ photoThumbs +'</div></div>';
+            infoWindow.setContent(infoContent);
+            infoWindow.open(map, places.marker());
+            self.setMarkerAnimation(places);
+            
         }, 'json');
+
+        request.fail(function(jqXHR, textStatus, errorThrown) {
+          if (textStatus == 'timeout')
+            console.log('The server is not responding');
+
+          if (textStatus == 'error')
+            console.log(errorThrown);
+
+        });
     };
 
     self.setMarkerAnimation = function(places) {
