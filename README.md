@@ -17,7 +17,7 @@ I did a map which has names of places in Florida, and on the map I did a marker 
 
 -- To see this project and to test it, you can go on my github page:
 
---
+--  https://github.com/artaaliu/neighborhood-map
 
 -- You can get it by clicking on "Download zip", and then extract on your computer, or by clicking "Clone or Download", and then on "Open in Desktop".
 
