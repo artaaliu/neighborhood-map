@@ -1,51 +1,32 @@
 ** Neighborhood Map **
-----
-Here is my website which shows some beautiful places in Florida.
-On the right side you have a map which tells where are those places that you can visit,
-and on the left side are the name of the places.
 
-###### you can see the name of places, *"name:"*,
-###### you can see the address of places, *"address"*,
-###### you can see the latitude of places, *'lat'*,
-###### you can see the longitude of places, *'lng'*,
-###### you can see the foursquare api of the places, *'fsID'* 
+=============
 
-----
+*Overview*
+------
 
-## I did the page responsive ##
-## it's made with bootstrap, so there are to colomos, the first one is col-md-4 and the second col-md-8##
+On this project I have created a website with a map showing some amazing places in **Florida**, if you decide to go there and have some fun.
 
-On the left side you can see that I did a button for searching places.
-You can write the name of the place on the box that you see empty, and then click the
-button **"Search for it!"**. After you search the place that you decide to visit,
-than you can see the marker on the map. After you write the name on the box for searching, you can see that
-the other places that you have on the list under the box will be hidden, but when you 
-refresh the page the list of the places with be there again. 
-When you will move the mouse on the list you can see that they will underline and you can 
-click on one of them and it will be opened on the same small box like it was showed like
-you did when you type the name for searching.
+The most important thing of creating this project is to apply many concepts related to the implementation of API's and the famous Knockout Javascript library.
 
+I did a map which has names of places in Florida, and on the map I did a marker on those places, and by clicking on them you can see the small box with the name of places address of them and photos.
 
----
+*Instructions*
 
-## I did a second class with the name <div class="second-list">##
+--------
 
-On the second list that you can see under the first one, is the text "Read more about those
-places", and on that list you can read hat wikipedia tells about those amazing places.
-You can click on the places and after you click it will shows the wikipedia page.
-People can read more about those places and than dicide which one they want to visit.
+-- To see this project and to test it, you can go on my github page:
 
-## when you click on them you can see that there is a link which will open a page for more details,
-<a href="#"></a>
+--
 
+-- You can get it by clicking on "Download zip", and then extract on your computer, or by clicking "Clone or Download", and then on "Open in Desktop".
 
-----
+----------
 
-# The perfect places that I wanted to show on the map are:
-*Universal Studios*
-*Walt Disney World*
-*Cocoa Beach*
-*Daytona Beach*
-*Panama City Beach*
-*Kissimee Parks*
+How did I made it"
 
+- I did a page responsive with bootstrap, I did two coloms: "col-md-4" and "col-md-8".
+- On "col-md-4", you can search the place on empty box that you can see and then you can click on button "Search for it".
+-Under the first list which is made Javascript, you can see another list which are the names for the same places but on this list you can click on them and you can see more information that I made a link by using <a href="https://en.wikipedia.org/wiki/....."> on Html File, all the information that you can read are from Wikipedia.
+
+-Then on "col-md-8" it's a map, which showed the marker on the places, and by clicking on them you can see the name of the places, and the address of that places that I got by google.map, and under those you can see some photos of the places, and I made it by using ** Foursquare API**, and you can see on the list on class " placesLocations", under name, address and on the end is "fsID", which showes the number of every single places, I got this number by typing the name of the place on Foursquare website and after showing what I was searching for, I got the last numbers on the link on the page, and I put that number on the code which has the link: "https://api.foursquare.com/v2/venues/+places.fsID()....".
