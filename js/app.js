@@ -96,31 +96,32 @@ var ViewModel = function() {
 
     self.placesClick = function(places) {   
         var photoThumbs = '';
-        var url = 'https://api.foursquare.com/v2/venues/'+ places.fsID() +'/photos?limit=9&client_id='+client_id+'&client_secret='+client_secret+'&v='+version;
-        var request = $.get(url);
-        request.done(function (data, status) {
-            $(data.response.photos.items).each(function (i, val) {
-               if(i < 4){
-                    photoThumbs += '<img src="' + val.prefix + '70x70' +val.suffix + '">';
-                }
-            });
+        var url = 'https://api.foursquare.com/v2/venues/'+ places.fsID() +'/photos?limit=9&client_id='+client_id+'&client_secret='+client_secret+'&v='+version; 
 
-            infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">'+ photoThumbs +'</div></div>';
-            infoWindow.setContent(infoContent);
+        $.ajax({
+          dataType: "json",
+          url: url,
+          success: function(data){ 
+                $(data.response.photos.items).each(function (i, val) {
+                   if(i < 4){
+                        photoThumbs += '<img src="' + val.prefix + '70x70' +val.suffix + '">';
+                    }
+                });
+                infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">'+ photoThumbs +'</div></div>';
+                loadInfoWindow(infoContent);
+            },
+          error: function(){ 
+                infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">No photos retrieved</div></div>';
+                loadInfoWindow(infoContent);
+            }
+        });
+
+        function loadInfoWindow(_infoContent){
+            infoWindow.setContent(_infoContent);
             infoWindow.open(map, places.marker());
             self.setMarkerAnimation(places);
-            
-        }, 'json');
+        }
 
-        request.fail(function(jqXHR, textStatus, errorThrown) {
-          if (textStatus == 'timeout')
-            infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">No images were found</div></div>';
-
-
-          if (textStatus == 'error')
-            infoContent = '<div class="tooltip"><h3 id="places-name">' + places.name() + '</h3>' + '<h5 id="places-address">' + places.address() + '</h5><div id="sqphotos">'+errorThrown+'</div></div>';
-
-        });
     };
 
     self.setMarkerAnimation = function(places) {
